@@ -111,7 +111,7 @@ LANGUAGE_CODE = 'uz'
 
 TIME_ZONE = 'Asia/Tashkent'
 
-USE_I18N = False
+USE_I18N = True
 
 USE_TZ = False
 
@@ -119,7 +119,7 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'assets/'
 STATIC_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = [
