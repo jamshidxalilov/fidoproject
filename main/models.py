@@ -3,18 +3,6 @@ from django.db import models
 from fido.helpers import UploadTo
 
 
-class Job(models.Model):
-    """Ona tili va adabiyoti, Matematika"""
-    name = models.CharField(max_length=128)
-
-    class Meta:
-        verbose_name = ('Ish turi')
-        verbose_name_plural = ('Ish turlari')
-
-    def __str__(self):
-        return self.name
-
-
 class Department(models.Model):
     """Aniq, Tabiiy, Ijtimoiy fanlar"""
     name = models.CharField(max_length=128)
@@ -22,6 +10,18 @@ class Department(models.Model):
     class Meta:
         verbose_name = ('Bo\'lim')
         verbose_name_plural = ('Bo\'limlar')
+
+    def __str__(self):
+        return self.name
+
+
+class Job(models.Model):
+    """Ona tili va adabiyoti, Matematika"""
+    name = models.CharField(max_length=128)
+
+    class Meta:
+        verbose_name = ('Ish turi')
+        verbose_name_plural = ('Ish turlari')
 
     def __str__(self):
         return self.name
@@ -61,8 +61,11 @@ class Attendance(models.Model):
 
     staff = models.ForeignKey(Staff, on_delete=models.RESTRICT)
     action = models.SmallIntegerField(choices=ACTIONS)
-    date = models.DateField()
     action_at = models.DateTimeField()
 
     def __str__(self):
         return str(self.action)
+
+    class Meta:
+        verbose_name = ('Ish davomati')
+        verbose_name_plural = ('Ish davomati')
