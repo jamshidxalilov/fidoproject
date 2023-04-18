@@ -2,6 +2,7 @@ import calendar
 from datetime import datetime, date, timezone
 
 from django.shortcuts import render
+from django.views import View
 from django.views.generic import TemplateView, DetailView
 from django.db.models import Sum
 from django_filters.views import FilterView
@@ -50,3 +51,12 @@ def MonthFilter(request, pk):
         "months": months
     })
 
+
+class LoadTable(View):
+    def get(self, request, id):
+        id = id
+        queryset = Attendance.objects.filter(enter_at__month=str(id))
+
+        return render(request, "pages/staff_about.html", {
+            "attendance": queryset
+        })

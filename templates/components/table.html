@@ -38,10 +38,10 @@
                             <path d="M3 11h16"></path>
                         </svg>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end">
+                    <div class="dropdown-menu dropdown-menu-end" id="id_month">
                         <span class="dropdown-header">Oylar bo'yicha filtr</span>
                         {% for m in months %}
-                        <a class="dropdown-item" href="{% url 'main:month' m.id %}">
+                        <a class="dropdown-item" data-id="{{ m.id }}" href="#!">
                             {{ m.name }}
                         </a>
                         {% endfor %}
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body p-0">
+        <div class="card-body p-0" id="id_table">
             <div class="col-12">
                 <div class="card">
                     <div class="table-responsive">
@@ -64,7 +64,7 @@
                             </thead>
                             <tbody>
                             {% for a in attendance %}
-                                <tr>
+                                <tr id="id_table = {{ a.id }}">
                                     <td class="text-muted">
                                         <span class="badge bg-success me-1">{{ a.enter_at }}</span>
                                     </td>

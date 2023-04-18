@@ -1,0 +1,40 @@
+<div class="card-body p-0" id="id_table">
+    <div class="col-12">
+        <div class="card">
+            <div class="table-responsive">
+                <table
+                        class="table table-vcenter card-table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Ishga keldi</th>
+                        <th>Ishdan ketdi</th>
+                        <th>Ish soati</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for a in attendance %}
+                        <tr id="id_table = {{ a.id }}">
+                            <td class="text-muted">
+                                <span class="badge bg-success me-1">{{ a.enter_at }}</span>
+                            </td>
+                            <td class="text-muted">
+                                <span class="badge bg-danger me-1">{{ a.leave_at }}</span>
+                            </td>
+                            <td>
+                                {{ a.hours|hour }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-footer d-flex align-items-lg-end">
+    {% for h in total_hours %}
+        <p class="m-0 ms-auto me-lg-5">
+            Jami ish soatlari: {{ h.hours__sum|hour }}
+        </p>
+    {% endfor %}
+</div>
