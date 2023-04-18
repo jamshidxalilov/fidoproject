@@ -64,7 +64,7 @@ class Attendance(models.Model):
     staff = models.ForeignKey(Staff, on_delete=models.RESTRICT)
     enter_at = models.DateTimeField()
     leave_at = models.DateTimeField(blank=True, null=True)
-    hours = models.IntegerField(blank=True, null=True)
+    hours = models.IntegerField(blank=True, null=True, default=0)
 
     def __str__(self):
         return str(self.staff)

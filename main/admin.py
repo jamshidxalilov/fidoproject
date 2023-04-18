@@ -50,9 +50,8 @@ class AttendanceForm(ModelForm):
         if self.instance.leave_at:
             hour = self.instance.leave_at - self.instance.enter_at
             h = int(hour.total_seconds())
-
-            obj, created = Attendance.objects.update_or_create(hours=h, staff_id=self.instance.staff_id,
-                                                                       enter_at=self.instance.enter_at, leave_at=self.instance.leave_at)
+            print(self.instance.id)
+            obj = Attendance.objects.filter(id=self.instance.id).update(hours=h)
             print(obj)
         return obj
 
