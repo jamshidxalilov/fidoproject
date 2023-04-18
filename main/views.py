@@ -1,3 +1,5 @@
+from datetime import datetime, date, timezone
+
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
 
@@ -23,6 +25,8 @@ class StaffAbout(DetailView):
         pk = self.kwargs['pk']
         data = super().get_context_data()
         data['staff'] = Staff.objects.filter(id=self.object.pk)
-        data['attendance'] = Attendance.objects.filter(staff_id=pk)
+        data['attendance'] = Attendance.objects.filter(staff_id=pk).order_by("-id")
+        # data['attendance_hours'] = Attendance.objects.filter(staff_id=pk, action_at__gte=date(2023, 5, 1))
+
         print(data)
         return data

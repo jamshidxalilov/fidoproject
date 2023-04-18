@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 from fido.helpers import UploadTo
@@ -51,20 +53,21 @@ class Staff(models.Model):
 class Attendance(models.Model):
     """Davomat"""
 
-    ACTION_IN = 1
-    ACTION_OUT = 0
-
-    ACTIONS = (
-        (ACTION_IN, 'Enter'),
-        (ACTION_OUT, 'Leave')
-    )
+    # ACTION_IN = 1
+    # ACTION_OUT = 0
+    #
+    # ACTIONS = (
+    #     (ACTION_IN, 'Enter'),
+    #     (ACTION_OUT, 'Leave')
+    # )
 
     staff = models.ForeignKey(Staff, on_delete=models.RESTRICT)
-    action = models.SmallIntegerField(choices=ACTIONS)
-    action_at = models.DateTimeField()
+    enter_at = models.DateTimeField()
+    leave_at = models.DateTimeField(blank=True, null=True)
+    hours = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return str(self.action)
+        return str(self.staff)
 
     class Meta:
         verbose_name = ('Ish davomati')
