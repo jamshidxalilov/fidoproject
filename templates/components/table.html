@@ -40,12 +40,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end">
                         <span class="dropdown-header">Oylar bo'yicha filtr</span>
-                        <a class="dropdown-item" href="#">
-                            Yanvar
+                        {% for m in months %}
+                        <a class="dropdown-item" href="{% url 'main:month' m.id %}">
+                            {{ m.name }}
                         </a>
-                        <a class="dropdown-item" href="#">
-                            Fevral
-                        </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

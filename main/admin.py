@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.forms import forms, ModelForm
 
-from .models import Job, Department, Staff, Attendance
+from .models import Job, Department, Staff, Attendance, Months
 
 
 @admin.register(Job)
@@ -72,3 +72,10 @@ class AttendanceAdmin(admin.ModelAdmin):
     #         Attendance.objects.filter(staff_id=obj.staff_id).update_or_create(hours=h)
     #     return super(AttendanceAdmin, self).save_model(request, obj, form, change)
 
+
+@admin.register(Months)
+class MonthsAdmin(admin.ModelAdmin):
+    list_display = [
+        'month',
+        'name'
+    ]

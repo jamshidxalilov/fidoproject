@@ -74,7 +74,7 @@ class Attendance(models.Model):
         verbose_name_plural = ('Ish davomati')
 
 
-class Month(models.Model):
+class Months(models.Model):
     MONTH = (
         (1, ("Yanvar")),
         (2, ("Fevral")),
@@ -90,4 +90,8 @@ class Month(models.Model):
         (12, ("Dekabr")),
     )
 
-    month = models.SmallIntegerField(default=100)
+    month = models.SmallIntegerField(default=100, choices=MONTH)
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
