@@ -1,3 +1,4 @@
+{% load humanize %}
 <div class="page-body">
 <div class="container-xl">
     <div class="row row-cards">
@@ -12,7 +13,7 @@
                         <span class="badge bg-purple-lt">{{ s.department }}</span>
                     </div>
                     <div class="mt-3">
-                        <span class="badge bg-green-lt">{{ s.hour_salary }}so'm</span>
+                        <span class="badge bg-green-lt">{{ s.hour_salary|intcomma }}so'm</span>
                     </div>
                 </div>
             </div>

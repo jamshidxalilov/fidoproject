@@ -1,3 +1,5 @@
+{% load helpers %}
+{% load humanize %}
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
@@ -15,7 +17,7 @@
                             <span class="badge bg-purple-lt">{{ s.department }}</span>
                         </div>
                         <div class="col">
-                            <span class="badge bg-green-lt">{{ s.hour_salary }}so'm</span>
+                            <span class="badge bg-green-lt">{{ s.hour_salary|intcomma }}so'm</span>
                         </div>
                     </div>
                 </div>
@@ -71,7 +73,7 @@
                                         <span class="badge bg-danger me-1">{{ a.leave_at }}</span>
                                     </td>
                                     <td>
-                                        {{ a.hour }}
+                                        {{ a.hours|hour }}
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -80,6 +82,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="card-footer d-flex align-items-lg-end">
+            {% for h in total_hours %}
+                <p class="m-0 ms-auto me-lg-5">
+                  Jami ish soatlari: {{ h.hours__sum|hour }}
+                </p>
+            {% endfor %}
         </div>
     </div>
 </div>

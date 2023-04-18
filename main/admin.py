@@ -52,7 +52,6 @@ class AttendanceForm(ModelForm):
             h = int(hour.total_seconds())
             print(self.instance.id)
             obj = Attendance.objects.filter(id=self.instance.id).update(hours=h)
-            print(obj)
         return obj
 
 
